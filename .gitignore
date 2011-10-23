@@ -1,0 +1,4 @@
+*.swp
+*.o
+readphidget
+mapping.txt

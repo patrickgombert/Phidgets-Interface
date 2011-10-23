@@ -1,0 +1,18 @@
+Allows the user to configure a file for their Phidgets Interface Kit.
+mappings.txt contains the key-value pairs as such:
+  "alias":port
+
+Then users can read the current value via a defined alias.
+
+Example:
+  I define the following confige
+    "light":1
+    "temperature":3
+  Provided the configuration matches my Interface Kit I can then call out to
+  the individual Phidgets.
+  ./readphidget light
+  -returns current light sensor value
+  ./readphidget temperature
+  -returns current temperature sensor value
+
+*NOTE: -1 is returned for a non mapped phidget
