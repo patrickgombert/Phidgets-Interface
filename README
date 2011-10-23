@@ -5,9 +5,9 @@ mappings.txt contains the key-value pairs as such:
 Then users can read the current value via a defined alias.
 
 Example:
-  I define the following confige
-    "light":1
-    "temperature":3
+  I define the following configuration
+    light:1
+    temperature:3
   Provided the configuration matches my Interface Kit I can then call out to
   the individual Phidgets.
   ./readphidget light
