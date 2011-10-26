@@ -27,7 +27,8 @@ void Alias::addEntry(string alias, int port) {
 }
 
 void Alias::removeEntry(const string alias) {
-  aliases.erase(alias);
+  PhidgetMap::iterator iter = aliases.find(alias);
+  aliases.erase(iter);
 }
 
 void Alias::readConfigFile() {
