@@ -1,6 +1,6 @@
 Allows the user to configure a file for their Phidgets Interface Kit.
 mappings.txt contains the key-value pairs as such:
-  "alias":port
+  alias:port
 
 Then users can read the current value via a defined alias.
 
@@ -14,5 +14,3 @@ Example:
   -returns current light sensor value
   ./readphidget temperature
   -returns current temperature sensor value
-
-*NOTE: -1 is returned for a non mapped phidget
