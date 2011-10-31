@@ -1,33 +1,34 @@
-#include <iostream>
-#include "phidgetcall.h"
+#include "includes/phidgetcall.h"
+#include "includes/fcgi_stdio.h"
 
 using namespace std;
 
-void printResult(int value, string arg) {
-  if(value == -1) {
-    cout << "No attached phidget named: " + arg << endl;
-  } else {
-    cout << value << endl;
-  }
-}
+Call *c;
+FCGX_Request request;
 
-void printUsage() {
-  cout << "Usage:\n  readphidget <alias>\n" << endl;
-  cout << "Define Phidget aliases in mapping.txt" << endl;
-  cout << "Use the following convention:" << endl;
-  cout << "  key:value" << endl;
-  cout << "Where key is the phidget's alias (defined by you)" << endl;
-  cout << "And value is the port that phidget is using on the interface kit" << endl;
+void initialize() {
+  c = new Call();
+
+  FCGX_Init();
+  FCGX_InitRequest(&request, 0, 0);
 }
 
 int main(int args, char *argv[]) {
-  Call *c = new Call();
-  if(args == 2) {
-    int value = c->getValue(argv[1]);
-    printResult(value, argv[1]);
-  } else {
-    printUsage();
+  initialize();
+
+  while(FCGX_Accept_r(&request) == 0) {
+    char* path;
+    path = FCGX_GetParam("PATH", request.envp);
+
+    printf("Content-type: text/html\r\n"
+           "\r\n"
+           "<h1>FastCGI Hello! (C, fcgi_stdio library)</h1>"
+           "<body>Path Given: %s", path, "</body>");
+
+    FCGI_SetExitStatus(200);
+    FCGX_Finish_r(&request);
   }
+
   delete c;
   return 0;
 }

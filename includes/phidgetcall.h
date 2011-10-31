@@ -1,5 +1,4 @@
 #include <phidget21.h>
-#include <string>
 #include "phidgetmap.h"
 
 class Call {

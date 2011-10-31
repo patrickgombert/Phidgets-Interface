@@ -1,5 +1,5 @@
 #include <string>
-#include "phidgetcall.h"
+#include "includes/phidgetcall.h"
 
 using namespace std;
 
@@ -26,6 +26,6 @@ int Call::getValue(string alias) {
 void Call::initializeIFKit() {
   CPhidgetInterfaceKit_create(&ifKit);
   CPhidget_open((CPhidgetHandle)ifKit, -1);
-  CPhidget_waitForAttachment((CPhidgetHandle)ifKit, 10000);
+  CPhidget_waitForAttachment((CPhidgetHandle)ifKit, 1000);
 }
 

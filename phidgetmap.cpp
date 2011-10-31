@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
-#include "phidgetmap.h"
+#include "includes/phidgetmap.h"
 
 using namespace std;
 
@@ -33,7 +33,7 @@ void Alias::removeEntry(const string alias) {
 
 void Alias::readConfigFile() {
   string json;
-  ifstream file ("mapping.txt");
+  ifstream file ("../mapping/mapping.txt");
   if (file.is_open()) {
     while (file.good()) {
       string temp;

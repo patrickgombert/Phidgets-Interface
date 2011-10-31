@@ -1,6 +1,5 @@
-#ifndef PHIDGETMAP_H_
-#define PHIDGETMAP_H_
 #include <map>
+#include <string>
 
 typedef std::map<std::string, int> PhidgetMap;
 
@@ -16,5 +15,3 @@ class Alias {
     void setMappingFromString(std::string);
     PhidgetMap aliases;
 };
-
-#endif

@@ -14,3 +14,10 @@ Example:
   -returns current light sensor value
   ./readphidget temperature
   -returns current temperature sensor value
+
+To cross compile:
+  SYSROOT=(..)/OpenWrt-SDK-brcm47xx-for-Linux-i686-gcc-4.3.3+cs_uClibc-0.9.30.1/staging_dir/toolchain-mipsel_gcc-4.3.3+cs_uClibc-0.9.30.1/
+  PATH=$SYSROOT/usr/bin:$PATH
+  export CXX="mipsel-openwrt-linux-g++ --sysroot $SYSROOT"
+  export LDFLAGS="-L$SYSROOT/../target-mipsel_uClibc-0.9.30.1/usr/lib"
+  export CXXFLAGS="-I$SYSROOT/../target-mipsel_uClibc-0.9.30.1/usr/include"
