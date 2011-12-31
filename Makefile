@@ -1,15 +1,13 @@
-CXXFLAGS +=     -c -Wall
+CXXFLAGS +=     -Wall
 
-LIBS =		-lphidget21 -lfcgi -luClibc++
+LIBS =		-lphidget21
 
-TARGET =	readphidget
+OBJS =          phidgetcall.o phidgetmap.o
 
-OBJS =           main.o phidgetcall.o phidgetmap.o
+all: $(OBJS)
 
-all: $(TARGET)
-
-$(TARGET): $(OBJS)
-	  $(CXX) -o $(TARGET) $(OBJS) $(LDFLAGS) $(LIBS)
+$(OBJ):
+	  $(CXX) -o $(OBJS) $(LDFLAGS) $(LIBS)
 
 clean:
-	rm -f *.o $(TARGET)
+	rm -f *.o
